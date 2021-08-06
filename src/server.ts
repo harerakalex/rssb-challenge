@@ -1,10 +1,12 @@
-import { config } from "dotenv";
-import express, { Request, Response } from "express";
-import bodyParser from "body-parser";
-import winston from "winston";
+import { config } from 'dotenv';
+import express, { Request, Response } from 'express';
+import { json, urlencoded } from 'body-parser';
+import winston from 'winston';
+import cors from 'cors';
+import morgan from 'morgan';
 
-import { logger } from "./config/logger";
-import { indexRouter } from "./modules";
+import { logger } from './config/logger';
+import { indexRouter } from './modules';
 
 config();
 logger();
@@ -12,12 +14,15 @@ logger();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(morgan('dev'));
 
-app.use("/api/v1", indexRouter);
+app.use(json());
+app.use(urlencoded({ extended: true }));
+
+app.use('/api/v1', indexRouter);
 app.use((req: Request, res: Response) => {
-  res.status(404).json({ status: 404, error: "Endpoint route not found" });
+  res.status(404).json({ status: 404, error: 'Endpoint route not found' });
 });
 
 app.listen(port, () => {
