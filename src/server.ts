@@ -7,6 +7,7 @@ import morgan from 'morgan';
 
 import { logger } from './config/logger';
 import { indexRouter } from './modules';
+import { databaseConnection } from './database';
 
 config();
 logger();
@@ -24,6 +25,8 @@ app.use('/api/v1', indexRouter);
 app.use((req: Request, res: Response) => {
   res.status(404).json({ status: 404, error: 'Endpoint route not found' });
 });
+
+databaseConnection();
 
 app.listen(port, () => {
   winston.info(`Server Listening on Port: ${port}`);
