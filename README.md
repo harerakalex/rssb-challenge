@@ -17,26 +17,24 @@ download the latest version of node js
 ## Installing
 
 You have to follow the follow this procedure to get started.
-Curretly data are being stored as json file but hopefully I will use postgresql database for persistence data.
 
-got to the Version control and clone down the application
+Go to the Version control and clone down the application
 
 ```
 git clone https://github.com/harerakalex/rssb-challenge.git
 ```
 
-To install all required dependecy `run npm install`
+To install all required dependecy `run yarn install`
 
 ```
-the server will automatically install all the needed packages in the application
+yarn install
 ```
 
-You need a testing environment like POSTMAN
+`The server will automatically install all the needed packages in the application`
 
-```
-For getting data from the app you will have to access every single API endpoint
-like  localhost:3000/api/v1/
-```
+You need a testing environment like **POSTMAN**
+
+`For getting data from the app you will have to access every single API endpoint like localhost:3000/api/v1/`
 
 | URL               | METHOD | DESCRIPTION                              |
 | ----------------- | ------ | ---------------------------------------- |
@@ -50,10 +48,13 @@ like  localhost:3000/api/v1/
 
 ## To run The project
 
-For nodemon use `npm run dev`
-For node use `npm start`
+For nodemon use `npm run dev` or `yarn run dev`
 
-## Built With Java script
+```
+yarn run dev
+```
+
+## Built With Javascript/Typescript
 
 Node/Express
 
